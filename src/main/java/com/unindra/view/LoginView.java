@@ -46,19 +46,24 @@ public class LoginView extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Masuk");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 90, 150, 50));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 280, 300, 40));
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 355, 300, 40));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 260, 300, 40));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 335, 300, 40));
 
         jCheckBox1.setText("Tampilkan kata sandi");
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 400, -1, -1));
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 380, -1, -1));
 
         jLabel2.setText("Nama pengguna");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 255, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 235, -1, -1));
 
         jLabel3.setText("Kata sandi");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 330, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 310, -1, -1));
 
         jButton1.setText("Masuk");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 450, 300, 40));
 
         jTabbedPane1.addTab("tab1", jPanel1);
@@ -80,6 +85,15 @@ public class LoginView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        Dashboard view = new Dashboard();
+        view.setVisible(true);
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void generateComponent(){
         initComponents();
