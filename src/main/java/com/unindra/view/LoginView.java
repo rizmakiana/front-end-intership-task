@@ -1,7 +1,6 @@
 package com.unindra.view;
 
 import com.unindra.util.AppManager;
-import java.awt.Image;
 
 /**
  *
