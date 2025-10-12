@@ -1,5 +1,6 @@
 package com.unindra.view;
 
+import com.sun.java.accessibility.util.SwingEventMonitor;
 import com.unindra.util.AppManager;
 import javax.swing.JInternalFrame;
 
@@ -136,6 +137,23 @@ public class Dashboard extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel34 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        addDepartment = new javax.swing.JInternalFrame();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        detailDepartment = new javax.swing.JInternalFrame();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jButton12 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management School App");
@@ -249,6 +267,11 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(0).setResizable(false);
@@ -317,6 +340,11 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 1200, 280));
 
         jButton3.setText("Tambah Jurusan");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, 150, 30));
 
         jButton4.setText("Tambah Kelas");
@@ -733,6 +761,65 @@ public class Dashboard extends javax.swing.JFrame {
 
         jDesktopPane1.add(detailStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 100, -1, -1));
 
+        addDepartment.setClosable(true);
+        addDepartment.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        addDepartment.setVisible(false);
+        addDepartment.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel35.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel35.setText("Tambah Jurusan");
+        addDepartment.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel36.setText("Nama Jurusan");
+        addDepartment.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+
+        jLabel37.setText("Kode Jurusan");
+        addDepartment.getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
+        addDepartment.getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 300, 30));
+        addDepartment.getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 105, 300, 30));
+
+        jButton11.setText("Tambah");
+        addDepartment.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 160, 120, 30));
+        addDepartment.getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        jDesktopPane1.add(addDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
+
+        detailDepartment.setClosable(true);
+        detailDepartment.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        detailDepartment.setVisible(false);
+        detailDepartment.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel39.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel39.setText("Detail Jurusan");
+        detailDepartment.getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel40.setText("Nama Jurusan");
+        detailDepartment.getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+
+        jLabel41.setText("Kode Jurusan");
+        detailDepartment.getContentPane().add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
+        detailDepartment.getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 300, 30));
+        detailDepartment.getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 105, 300, 30));
+
+        jButton12.setText("Hapus");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        detailDepartment.getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 120, 30));
+        detailDepartment.getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        jButton13.setText("Edit");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        detailDepartment.getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 160, 120, 30));
+
+        jDesktopPane1.add(detailDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
+
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
@@ -741,7 +828,9 @@ public class Dashboard extends javax.swing.JFrame {
     private JInternalFrame[] getAllInternalFrames(){
         return  new JInternalFrame[]{
             addStudent,
-            detailStudent
+            detailStudent, 
+            addDepartment,
+            detailDepartment
         };
     }
     
@@ -771,6 +860,28 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        detailDepartment.setVisible(false);
+        addDepartment.setVisible(true);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        
+        addDepartment.setVisible(false);
+        detailDepartment.setVisible(true);
+        
+    }//GEN-LAST:event_jTable2MouseClicked
+
     private void generateComponents(){
         initComponents();
         setLocationRelativeTo(null);
@@ -783,10 +894,15 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame addDepartment;
     private javax.swing.JInternalFrame addStudent;
+    private javax.swing.JInternalFrame detailDepartment;
     private javax.swing.JInternalFrame detailStudent;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -844,7 +960,15 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -885,6 +1009,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
