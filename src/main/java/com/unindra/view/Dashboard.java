@@ -36,7 +36,17 @@ public class Dashboard extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable10 = new javax.swing.JTable();
+        jComboBox10 = new javax.swing.JComboBox<>();
+        jComboBox11 = new javax.swing.JComboBox<>();
+        jComboBox12 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -51,7 +61,16 @@ public class Dashboard extends javax.swing.JFrame {
         jTable6 = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox9 = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -223,18 +242,64 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 1200, 280));
 
+        jButton3.setText("Tambah Jurusan");
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, 150, 30));
+
+        jButton4.setText("Tambah Kelas");
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(915, 50, 150, 30));
+
+        jButton5.setText("Tambah Bagian");
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 50, 150, 30));
+
         jTabbedPane1.addTab("Data Kelas", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1240, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
-        );
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Adwaita Sans", 0, 32)); // NOI18N
+        jLabel14.setText("Data Tabungan");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 40));
+
+        jLabel15.setText("Data Tabungan Seluruh Siswa Sekolah");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 25));
+
+        jTable10.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "No Transaksi", "Nama Siswa", "Tanggal", "Total Tabungan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(jTable10);
+
+        jPanel3.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 1200, 550));
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Jurusan" }));
+        jPanel3.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 150, 30));
+
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Kelas", "10", "11", "12" }));
+        jPanel3.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(925, 50, 130, 30));
+
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Subkelas", "A", "B", "C" }));
+        jPanel3.add(jComboBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 50, 160, 30));
 
         jTabbedPane1.addTab("Tabungan", jPanel3);
 
@@ -259,7 +324,7 @@ public class Dashboard extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable5);
 
-        jPanel7.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1200, 500));
+        jPanel7.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 1200, 500));
 
         jTabbedPane2.addTab("Pembayaran Siswa", jPanel7);
 
@@ -280,7 +345,7 @@ public class Dashboard extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "No", "Nama Pembayaran"
+                "No", "Nama Kategori Pembayaran"
             }
         ) {
             Class[] types = new Class [] {
@@ -304,7 +369,7 @@ public class Dashboard extends javax.swing.JFrame {
             jTable6.getColumnModel().getColumn(1).setPreferredWidth(550);
         }
 
-        jPanel8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 595, 500));
+        jPanel8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 595, 500));
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -340,7 +405,13 @@ public class Dashboard extends javax.swing.JFrame {
             jTable7.getColumnModel().getColumn(3).setPreferredWidth(180);
         }
 
-        jPanel8.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 90, 595, 500));
+        jPanel8.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 85, 595, 500));
+
+        jButton6.setText("Tambah Kategori");
+        jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(885, 50, -1, 30));
+
+        jButton7.setText("Tambah Pembayaran");
+        jPanel8.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 50, -1, 30));
 
         jTabbedPane2.addTab("Manajemen Pembayaran", jPanel8);
 
@@ -348,23 +419,57 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Dasbor Pembayaran", jPanel4);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1240, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
-        );
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Adwaita Sans", 0, 32)); // NOI18N
+        jLabel12.setText("Riwayat Tabungan");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 370, 40));
+
+        jLabel13.setText("Data Riwayat Tabungan Harian Siswa Sekolah");
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 330, 25));
+
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "No Transaksi", "Nama Siswa", "Tanggal", "Biaya Masuk", "Biaya Keluar"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(jTable9);
+
+        jPanel5.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1200, 540));
+
+        jPanel5.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 55, 60, 30));
+
+        jPanel5.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 55, 125, 30));
+
+        jPanel5.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 55, 80, 30));
 
         jTabbedPane1.addTab("Riwayat Tabungan", jPanel5);
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Adwaita Sans", 0, 32)); // NOI18N
-        jLabel10.setText("Data Transaksi");
+        jLabel10.setText("Riwayat Transaksi");
         jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 40));
 
         jLabel11.setText("Data Transaksi Seluruh Siswa Sekolah");
@@ -420,20 +525,37 @@ public class Dashboard extends javax.swing.JFrame {
         this.setIconImage(AppManager.getImageIcon().getImage());
         
         jTabbedPane1.putClientProperty("JTabbedPane.tabHeight", 40);
+        jTabbedPane2.putClientProperty("JTabbedPane.tabHeight", 40);
+        jTabbedPane2.putClientProperty("JTabbedPane.tabAreaAlignment", "fill");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox10;
+    private javax.swing.JComboBox<String> jComboBox11;
+    private javax.swing.JComboBox<String> jComboBox12;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -451,6 +573,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -458,9 +581,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -468,6 +593,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
