@@ -109,6 +109,8 @@ public class Dashboard extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jComboBox29 = new javax.swing.JComboBox<>();
         detailStudent = new javax.swing.JInternalFrame();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -137,6 +139,11 @@ public class Dashboard extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel34 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        jComboBox30 = new javax.swing.JComboBox<>();
+        jComboBox31 = new javax.swing.JComboBox<>();
+        jLabel67 = new javax.swing.JLabel();
+        jComboBox32 = new javax.swing.JComboBox<>();
+        jLabel68 = new javax.swing.JLabel();
         addDepartment = new javax.swing.JInternalFrame();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -756,6 +763,11 @@ public class Dashboard extends javax.swing.JFrame {
         addStudent.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 520, 120, 30));
         addStudent.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 565, -1, -1));
 
+        jLabel66.setText("Jurusan");
+        addStudent.getContentPane().add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, 30));
+
+        addStudent.getContentPane().add(jComboBox29, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 300, 30));
+
         jDesktopPane1.add(addStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 100, -1, -1));
 
         detailStudent.setClosable(true);
@@ -826,11 +838,24 @@ public class Dashboard extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        detailStudent.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 120, 30));
+        detailStudent.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 535, 120, 30));
         detailStudent.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 565, -1, -1));
 
         jButton10.setText("Edit");
-        detailStudent.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 520, 120, 30));
+        detailStudent.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 535, 120, 30));
+
+        jComboBox30.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "11", "12" }));
+        detailStudent.getContentPane().add(jComboBox30, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 485, 150, 30));
+
+        detailStudent.getContentPane().add(jComboBox31, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 485, 145, 30));
+
+        jLabel67.setText("Jurusan");
+        detailStudent.getContentPane().add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, 30));
+
+        detailStudent.getContentPane().add(jComboBox32, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 300, 30));
+
+        jLabel68.setText("\n");
+        detailStudent.getContentPane().add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, -1, -1));
 
         jDesktopPane1.add(detailStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 100, -1, -1));
 
@@ -1258,7 +1283,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox26;
     private javax.swing.JComboBox<String> jComboBox27;
     private javax.swing.JComboBox<String> jComboBox28;
+    private javax.swing.JComboBox<String> jComboBox29;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox30;
+    private javax.swing.JComboBox<String> jComboBox31;
+    private javax.swing.JComboBox<String> jComboBox32;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
@@ -1328,6 +1357,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
