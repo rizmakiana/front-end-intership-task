@@ -154,6 +154,28 @@ public class Dashboard extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jLabel42 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
+        addClassroom = new javax.swing.JInternalFrame();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
+        jLabel46 = new javax.swing.JLabel();
+        jComboBox21 = new javax.swing.JComboBox<>();
+        jComboBox22 = new javax.swing.JComboBox<>();
+        detailClassroom = new javax.swing.JInternalFrame();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jButton15 = new javax.swing.JButton();
+        jLabel50 = new javax.swing.JLabel();
+        jButton16 = new javax.swing.JButton();
+        jComboBox23 = new javax.swing.JComboBox<>();
+        jComboBox24 = new javax.swing.JComboBox<>();
+        jLabel51 = new javax.swing.JLabel();
+        jTextField14 = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management School App");
@@ -282,21 +304,33 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Kode Kelas", "Tingkat Kelas"
+                "Kode Tingkat Kelas", "Jurusan", "Tingkat Kelas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(jTable3);
@@ -311,14 +345,14 @@ public class Dashboard extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Kode Bagian", "Jurusan", "Kelas", "Nama Bagian"
+                "Kode Kelas", "Jurusan", "Tingkat Kelas", "Nama Kelas"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -345,12 +379,17 @@ public class Dashboard extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, 150, 30));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, 150, 30));
 
-        jButton4.setText("Tambah Kelas");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(915, 50, 150, 30));
+        jButton4.setText("Tambah Tingkat Kelas");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(865, 50, 200, 30));
 
-        jButton5.setText("Tambah Bagian");
+        jButton5.setText("Tambah Kelas");
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 50, 150, 30));
 
         jTabbedPane1.addTab("Data Kelas", jPanel2);
@@ -820,6 +859,87 @@ public class Dashboard extends javax.swing.JFrame {
 
         jDesktopPane1.add(detailDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
 
+        addClassroom.setClosable(true);
+        addClassroom.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        addClassroom.setVisible(false);
+        addClassroom.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel43.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel43.setText("Tambah Tingkat Kelas");
+        addClassroom.getContentPane().add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel44.setText("Jurusan");
+        addClassroom.getContentPane().add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+
+        jLabel45.setText("Tingkat Kelas");
+        addClassroom.getContentPane().add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
+
+        jButton14.setText("Tambah");
+        addClassroom.getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 160, 120, 30));
+        addClassroom.getContentPane().add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        addClassroom.getContentPane().add(jComboBox21, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 300, 30));
+
+        jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "11", "12" }));
+        addClassroom.getContentPane().add(jComboBox22, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 105, 300, 30));
+
+        jDesktopPane1.add(addClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
+
+        detailClassroom.setClosable(true);
+        detailClassroom.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        detailClassroom.setVisible(false);
+        detailClassroom.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel47.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel47.setText("Detail Tingkat Kelas");
+        detailClassroom.getContentPane().add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel48.setText("Jurusan");
+        detailClassroom.getContentPane().add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
+
+        jLabel49.setText("Tingkat Kelas");
+        detailClassroom.getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+
+        jButton15.setText("Hapus");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        detailClassroom.getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 120, 30));
+        detailClassroom.getContentPane().add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        jButton16.setText("Edit");
+        jButton16.setEnabled(false);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        detailClassroom.getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 120, 30));
+
+        jComboBox23.setEnabled(false);
+        detailClassroom.getContentPane().add(jComboBox23, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 105, 300, 30));
+
+        jComboBox24.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "11", "12" }));
+        jComboBox24.setEnabled(false);
+        detailClassroom.getContentPane().add(jComboBox24, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 300, 30));
+
+        jLabel51.setText("Kode Tingkat Kelas");
+        detailClassroom.getContentPane().add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+
+        jTextField14.setEnabled(false);
+        detailClassroom.getContentPane().add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 300, 30));
+
+        jLabel52.setText("Total Kelas");
+        detailClassroom.getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 175, -1, 30));
+
+        jTextField15.setEnabled(false);
+        detailClassroom.getContentPane().add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 175, 300, 30));
+        detailClassroom.getContentPane().add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, -1, -1));
+
+        jDesktopPane1.add(detailClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
+
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
@@ -830,7 +950,9 @@ public class Dashboard extends javax.swing.JFrame {
             addStudent,
             detailStudent, 
             addDepartment,
-            detailDepartment
+            detailDepartment,
+            addClassroom,
+            detailClassroom
         };
     }
     
@@ -862,8 +984,11 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        detailDepartment.setVisible(false);
         addDepartment.setVisible(true);
+        addClassroom.setVisible(false);
+        
+        detailDepartment.setVisible(false);
+        detailClassroom.setVisible(false);
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -878,9 +1003,40 @@ public class Dashboard extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         
         addDepartment.setVisible(false);
+        addClassroom.setVisible(false);
+        
         detailDepartment.setVisible(true);
+        detailClassroom.setVisible(false);
         
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        addDepartment.setVisible(false);
+        addClassroom.setVisible(true);
+        
+        detailDepartment.setVisible(false);
+        detailClassroom.setVisible(false);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        
+        addDepartment.setVisible(false);
+        addClassroom.setVisible(false);
+        
+        detailDepartment.setVisible(false);
+        detailClassroom.setVisible(true);
+        
+    }//GEN-LAST:event_jTable3MouseClicked
 
     private void generateComponents(){
         initComponents();
@@ -894,8 +1050,10 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame addClassroom;
     private javax.swing.JInternalFrame addDepartment;
     private javax.swing.JInternalFrame addStudent;
+    private javax.swing.JInternalFrame detailClassroom;
     private javax.swing.JInternalFrame detailDepartment;
     private javax.swing.JInternalFrame detailStudent;
     private javax.swing.JButton jButton1;
@@ -903,6 +1061,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -924,6 +1085,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox19;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox20;
+    private javax.swing.JComboBox<String> jComboBox21;
+    private javax.swing.JComboBox<String> jComboBox22;
+    private javax.swing.JComboBox<String> jComboBox23;
+    private javax.swing.JComboBox<String> jComboBox24;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
@@ -969,7 +1134,18 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1013,6 +1189,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
