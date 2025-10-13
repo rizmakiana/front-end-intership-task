@@ -207,6 +207,15 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jTextField18 = new javax.swing.JTextField();
+        transactionPanel = new javax.swing.JInternalFrame();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable11 = new javax.swing.JTable();
+        jLabel69 = new javax.swing.JLabel();
+        jComboBox33 = new javax.swing.JComboBox<>();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTable12 = new javax.swing.JTable();
+        jLabel70 = new javax.swing.JLabel();
+        jButton20 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management School App");
@@ -498,12 +507,17 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null}
             },
             new String [] {
                 "NIS", "Nama Siswa", "Total Tunggakan"
             }
         ));
+        jTable5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable5MouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTable5);
 
         jPanel7.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 1200, 500));
@@ -1083,6 +1097,76 @@ public class Dashboard extends javax.swing.JFrame {
 
         jDesktopPane1.add(detailSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
 
+        transactionPanel.setClosable(true);
+        transactionPanel.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        transactionPanel.setVisible(false);
+        transactionPanel.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable11.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Pembayaran", "Biaya"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane13.setViewportView(jTable11);
+
+        transactionPanel.getContentPane().add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 45, 575, 390));
+
+        jLabel69.setText("Nama Siswa : ");
+        transactionPanel.getContentPane().add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
+        transactionPanel.getContentPane().add(jComboBox33, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 10, 150, 30));
+
+        jTable12.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Pembayaran", "Biaya"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane14.setViewportView(jTable12);
+
+        transactionPanel.getContentPane().add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 575, 390));
+
+        jLabel70.setText("Total : Rp. ");
+        transactionPanel.getContentPane().add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 405, 210, 30));
+
+        jButton20.setText("Bayar");
+        transactionPanel.getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 405, 150, 30));
+
+        jDesktopPane1.add(transactionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 1200, 500));
+
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
@@ -1097,7 +1181,8 @@ public class Dashboard extends javax.swing.JFrame {
             addClassroom,
             detailClassroom,
             addSection,
-            detailSection
+            detailSection,
+            transactionPanel
         };
     }
     
@@ -1223,6 +1308,12 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable4MouseClicked
 
+    private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
+        
+        transactionPanel.setVisible(true);
+        
+    }//GEN-LAST:event_jTable5MouseClicked
+
     private void generateComponents(){
         initComponents();
         setLocationRelativeTo(null);
@@ -1255,6 +1346,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1288,6 +1380,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox30;
     private javax.swing.JComboBox<String> jComboBox31;
     private javax.swing.JComboBox<String> jComboBox32;
+    private javax.swing.JComboBox<String> jComboBox33;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
@@ -1360,7 +1453,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -1375,6 +1470,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1387,6 +1484,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
+    private javax.swing.JTable jTable11;
+    private javax.swing.JTable jTable12;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -1425,5 +1524,6 @@ public class Dashboard extends javax.swing.JFrame {
     private com.unindra.component.RegionComboBox regionComboBox7;
     private com.unindra.component.RegionComboBox regionComboBox8;
     private com.unindra.component.RegionComboBox regionComboBox9;
+    private javax.swing.JInternalFrame transactionPanel;
     // End of variables declaration//GEN-END:variables
 }
