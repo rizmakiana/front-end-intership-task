@@ -19,17 +19,17 @@ public class Dashboard extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        studentPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        studentTable = new javax.swing.JTable();
+        studentPanelSearchField = new javax.swing.JTextField();
+        studentPanelSectionList = new javax.swing.JComboBox<>();
+        studentPanelClassroomList = new javax.swing.JComboBox<>();
+        studentPanelDepartmentList = new javax.swing.JComboBox<>();
+        studentPanelAddStudentButton = new javax.swing.JButton();
+        studentPanelPrintButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -89,28 +89,28 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        regionComboBox1 = new com.unindra.component.RegionComboBox();
-        regionComboBox2 = new com.unindra.component.RegionComboBox();
-        jComboBox13 = new javax.swing.JComboBox<>();
-        jComboBox14 = new javax.swing.JComboBox<>();
-        jComboBox15 = new javax.swing.JComboBox<>();
-        regionComboBox3 = new com.unindra.component.RegionComboBox();
-        regionComboBox4 = new com.unindra.component.RegionComboBox();
-        regionComboBox5 = new com.unindra.component.RegionComboBox();
+        addStudentNameField = new javax.swing.JTextField();
+        addStudentProvinceBirthplaceField = new com.unindra.component.RegionComboBox();
+        addStudentRegencyBirthplaceField = new com.unindra.component.RegionComboBox();
+        addStudentBirthdateField = new javax.swing.JComboBox<>();
+        addStudentBirthMonthField = new javax.swing.JComboBox<>();
+        addStudentBirthYearField = new javax.swing.JComboBox<>();
+        addStudentProvinceAddressField = new com.unindra.component.RegionComboBox();
+        addStudentRegencyAddressField = new com.unindra.component.RegionComboBox();
+        addStudentDistrictAddressField = new com.unindra.component.RegionComboBox();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox16 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
+        addStudentDetailAddressField = new javax.swing.JTextArea();
+        addStudentGenderField = new javax.swing.JComboBox<>();
+        addStudentUsernameField = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        addStudentEmailField = new javax.swing.JTextField();
+        addStudentPhoneNumberField = new javax.swing.JTextField();
+        addStudentAddButton = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
-        jComboBox29 = new javax.swing.JComboBox<>();
+        addStudentDepartmentField = new javax.swing.JComboBox<>();
         detailStudent = new javax.swing.JInternalFrame();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -118,31 +118,31 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        regionComboBox6 = new com.unindra.component.RegionComboBox();
-        regionComboBox7 = new com.unindra.component.RegionComboBox();
-        jComboBox17 = new javax.swing.JComboBox<>();
-        jComboBox18 = new javax.swing.JComboBox<>();
-        jComboBox19 = new javax.swing.JComboBox<>();
-        regionComboBox8 = new com.unindra.component.RegionComboBox();
-        regionComboBox9 = new com.unindra.component.RegionComboBox();
-        regionComboBox10 = new com.unindra.component.RegionComboBox();
+        detailStudentNameField = new javax.swing.JTextField();
+        detailStudentProvinceField = new com.unindra.component.RegionComboBox();
+        detailStudentRegencyField = new com.unindra.component.RegionComboBox();
+        detailStudentBirthDateField = new javax.swing.JComboBox<>();
+        detailStudentbirthMonthField = new javax.swing.JComboBox<>();
+        detailStudentBirthYearField = new javax.swing.JComboBox<>();
+        detailStudentProvinceAddressField = new com.unindra.component.RegionComboBox();
+        detailStudentRegencyAddressField = new com.unindra.component.RegionComboBox();
+        detailStudentDistrictAddressField = new com.unindra.component.RegionComboBox();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jComboBox20 = new javax.swing.JComboBox<>();
-        jTextField7 = new javax.swing.JTextField();
+        detailStudentDetailAddressField = new javax.swing.JTextArea();
+        detailStudentGenderField = new javax.swing.JComboBox<>();
+        detailStudentUsernameField = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
+        detailStudentEmailField = new javax.swing.JTextField();
+        detailStudentPhoneNumberField = new javax.swing.JTextField();
+        detailStudentDeleteButton = new javax.swing.JButton();
         jLabel34 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jComboBox30 = new javax.swing.JComboBox<>();
-        jComboBox31 = new javax.swing.JComboBox<>();
+        detailStudentEditButton = new javax.swing.JButton();
+        detailStudentClassroomField = new javax.swing.JComboBox<>();
+        detailStudentSectionField = new javax.swing.JComboBox<>();
         jLabel67 = new javax.swing.JLabel();
-        jComboBox32 = new javax.swing.JComboBox<>();
+        detailStudentDepartmentField = new javax.swing.JComboBox<>();
         jLabel68 = new javax.swing.JLabel();
         addDepartment = new javax.swing.JInternalFrame();
         jLabel35 = new javax.swing.JLabel();
@@ -230,16 +230,16 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        studentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Adwaita Sans", 0, 32)); // NOI18N
         jLabel2.setText("Data Siswa");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 40));
+        studentPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 40));
 
         jLabel3.setText("Data Seluruh Siswa Sekolah");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 25));
+        studentPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 25));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        studentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null}
             },
@@ -262,37 +262,37 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        studentTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                studentTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(studentTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 1200, 545));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, 260, 30));
+        studentPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 1200, 545));
+        studentPanel.add(studentPanelSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, 260, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Subkelas", "A", "B", "C" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(795, 50, 160, 30));
+        studentPanelSectionList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Subkelas", "A", "B", "C" }));
+        studentPanel.add(studentPanelSectionList, new org.netbeans.lib.awtextra.AbsoluteConstraints(795, 50, 160, 30));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Kelas", "10", "11", "12" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 130, 30));
+        studentPanelClassroomList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Kelas", "10", "11", "12" }));
+        studentPanel.add(studentPanelClassroomList, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 130, 30));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Jurusan" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 50, 150, 30));
+        studentPanelDepartmentList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Jurusan" }));
+        studentPanel.add(studentPanelDepartmentList, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 50, 150, 30));
 
-        jButton1.setText("Tambah Siswa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        studentPanelAddStudentButton.setText("Tambah Siswa");
+        studentPanelAddStudentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                studentPanelAddStudentButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 15, 155, 30));
+        studentPanel.add(studentPanelAddStudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 15, 155, 30));
 
-        jButton2.setText("Cetak");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 15, 100, 30));
+        studentPanelPrintButton.setText("Cetak");
+        studentPanel.add(studentPanelPrintButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 15, 100, 30));
 
-        jTabbedPane1.addTab("Data Siswa", jPanel1);
+        jTabbedPane1.addTab("Data Siswa", studentPanel);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -734,33 +734,33 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel20.setText("Alamat");
         addStudent.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
-        addStudent.getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
-        addStudent.getContentPane().add(regionComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
-        addStudent.getContentPane().add(regionComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
+        addStudent.getContentPane().add(addStudentNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
+        addStudent.getContentPane().add(addStudentProvinceBirthplaceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
+        addStudent.getContentPane().add(addStudentRegencyBirthplaceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
 
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "28", "29", "30", "31" }));
-        addStudent.getContentPane().add(jComboBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 175, -1, 30));
+        addStudentBirthdateField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "28", "29", "30", "31" }));
+        addStudent.getContentPane().add(addStudentBirthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 175, -1, 30));
 
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "September", "Oktober" }));
-        addStudent.getContentPane().add(jComboBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 175, 135, 30));
+        addStudentBirthMonthField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "September", "Oktober" }));
+        addStudent.getContentPane().add(addStudentBirthMonthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 175, 135, 30));
 
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
-        addStudent.getContentPane().add(jComboBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
-        addStudent.getContentPane().add(regionComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
-        addStudent.getContentPane().add(regionComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
-        addStudent.getContentPane().add(regionComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
+        addStudentBirthYearField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
+        addStudent.getContentPane().add(addStudentBirthYearField, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
+        addStudent.getContentPane().add(addStudentProvinceAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
+        addStudent.getContentPane().add(addStudentRegencyAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
+        addStudent.getContentPane().add(addStudentDistrictAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane11.setViewportView(jTextArea1);
+        addStudentDetailAddressField.setColumns(20);
+        addStudentDetailAddressField.setLineWrap(true);
+        addStudentDetailAddressField.setRows(5);
+        addStudentDetailAddressField.setWrapStyleWord(true);
+        jScrollPane11.setViewportView(addStudentDetailAddressField);
 
         addStudent.getContentPane().add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 300, 60));
 
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
-        addStudent.getContentPane().add(jComboBox16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 105, 300, 30));
-        addStudent.getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 345, 300, 30));
+        addStudentGenderField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
+        addStudent.getContentPane().add(addStudentGenderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 105, 300, 30));
+        addStudent.getContentPane().add(addStudentUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 345, 300, 30));
 
         jLabel21.setText("Nama Pengguna");
         addStudent.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 345, -1, 30));
@@ -770,17 +770,17 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel23.setText("No Telepon");
         addStudent.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 415, -1, 30));
-        addStudent.getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 300, 30));
-        addStudent.getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 415, 300, 30));
+        addStudent.getContentPane().add(addStudentEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 300, 30));
+        addStudent.getContentPane().add(addStudentPhoneNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 415, 300, 30));
 
-        jButton8.setText("Tambah");
-        addStudent.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 520, 120, 30));
+        addStudentAddButton.setText("Tambah");
+        addStudent.getContentPane().add(addStudentAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 520, 120, 30));
         addStudent.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 565, -1, -1));
 
         jLabel66.setText("Jurusan");
         addStudent.getContentPane().add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, 30));
 
-        addStudent.getContentPane().add(jComboBox29, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 300, 30));
+        addStudent.getContentPane().add(addStudentDepartmentField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 300, 30));
 
         jDesktopPane1.add(addStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 100, -1, -1));
 
@@ -807,33 +807,33 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel30.setText("Alamat");
         detailStudent.getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
-        detailStudent.getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
-        detailStudent.getContentPane().add(regionComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
-        detailStudent.getContentPane().add(regionComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
+        detailStudent.getContentPane().add(detailStudentNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
+        detailStudent.getContentPane().add(detailStudentProvinceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
+        detailStudent.getContentPane().add(detailStudentRegencyField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
 
-        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "28", "29", "30", "31" }));
-        detailStudent.getContentPane().add(jComboBox17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 175, -1, 30));
+        detailStudentBirthDateField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "28", "29", "30", "31" }));
+        detailStudent.getContentPane().add(detailStudentBirthDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 175, -1, 30));
 
-        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "September", "Oktober" }));
-        detailStudent.getContentPane().add(jComboBox18, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 175, 135, 30));
+        detailStudentbirthMonthField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "September", "Oktober" }));
+        detailStudent.getContentPane().add(detailStudentbirthMonthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 175, 135, 30));
 
-        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
-        detailStudent.getContentPane().add(jComboBox19, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
-        detailStudent.getContentPane().add(regionComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
-        detailStudent.getContentPane().add(regionComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
-        detailStudent.getContentPane().add(regionComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
+        detailStudentBirthYearField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
+        detailStudent.getContentPane().add(detailStudentBirthYearField, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
+        detailStudent.getContentPane().add(detailStudentProvinceAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
+        detailStudent.getContentPane().add(detailStudentRegencyAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
+        detailStudent.getContentPane().add(detailStudentDistrictAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setWrapStyleWord(true);
-        jScrollPane12.setViewportView(jTextArea2);
+        detailStudentDetailAddressField.setColumns(20);
+        detailStudentDetailAddressField.setLineWrap(true);
+        detailStudentDetailAddressField.setRows(5);
+        detailStudentDetailAddressField.setWrapStyleWord(true);
+        jScrollPane12.setViewportView(detailStudentDetailAddressField);
 
         detailStudent.getContentPane().add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 300, 60));
 
-        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
-        detailStudent.getContentPane().add(jComboBox20, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 105, 300, 30));
-        detailStudent.getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 345, 300, 30));
+        detailStudentGenderField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
+        detailStudent.getContentPane().add(detailStudentGenderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 105, 300, 30));
+        detailStudent.getContentPane().add(detailStudentUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 345, 300, 30));
 
         jLabel31.setText("Nama Pengguna");
         detailStudent.getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 345, -1, 30));
@@ -843,30 +843,30 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel33.setText("No Telepon");
         detailStudent.getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 415, -1, 30));
-        detailStudent.getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 300, 30));
-        detailStudent.getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 415, 300, 30));
+        detailStudent.getContentPane().add(detailStudentEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 300, 30));
+        detailStudent.getContentPane().add(detailStudentPhoneNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 415, 300, 30));
 
-        jButton9.setText("Hapus");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        detailStudentDeleteButton.setText("Hapus");
+        detailStudentDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                detailStudentDeleteButtonActionPerformed(evt);
             }
         });
-        detailStudent.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 535, 120, 30));
+        detailStudent.getContentPane().add(detailStudentDeleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 535, 120, 30));
         detailStudent.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 565, -1, -1));
 
-        jButton10.setText("Edit");
-        detailStudent.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 535, 120, 30));
+        detailStudentEditButton.setText("Edit");
+        detailStudent.getContentPane().add(detailStudentEditButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 535, 120, 30));
 
-        jComboBox30.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "11", "12" }));
-        detailStudent.getContentPane().add(jComboBox30, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 485, 150, 30));
+        detailStudentClassroomField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "11", "12" }));
+        detailStudent.getContentPane().add(detailStudentClassroomField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 485, 150, 30));
 
-        detailStudent.getContentPane().add(jComboBox31, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 485, 145, 30));
+        detailStudent.getContentPane().add(detailStudentSectionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 485, 145, 30));
 
         jLabel67.setText("Jurusan");
         detailStudent.getContentPane().add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, 30));
 
-        detailStudent.getContentPane().add(jComboBox32, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 300, 30));
+        detailStudent.getContentPane().add(detailStudentDepartmentField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 300, 30));
 
         jLabel68.setText("\n");
         detailStudent.getContentPane().add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, -1, -1));
@@ -1186,23 +1186,23 @@ public class Dashboard extends javax.swing.JFrame {
         };
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void studentPanelAddStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentPanelAddStudentButtonActionPerformed
         
         detailStudent.setVisible(false);
         addStudent.setVisible(true);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_studentPanelAddStudentButtonActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void detailStudentDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailStudentDeleteButtonActionPerformed
         
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_detailStudentDeleteButtonActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void studentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentTableMouseClicked
         
         addStudent.setVisible(false);
         detailStudent.setVisible(true);
         
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_studentTableMouseClicked
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         
@@ -1330,12 +1330,45 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JInternalFrame addDepartment;
     private javax.swing.JInternalFrame addSection;
     private javax.swing.JInternalFrame addStudent;
+    private javax.swing.JButton addStudentAddButton;
+    private javax.swing.JComboBox<String> addStudentBirthMonthField;
+    private javax.swing.JComboBox<String> addStudentBirthYearField;
+    private javax.swing.JComboBox<String> addStudentBirthdateField;
+    private javax.swing.JComboBox<String> addStudentDepartmentField;
+    private javax.swing.JTextArea addStudentDetailAddressField;
+    private com.unindra.component.RegionComboBox addStudentDistrictAddressField;
+    private javax.swing.JTextField addStudentEmailField;
+    private javax.swing.JComboBox<String> addStudentGenderField;
+    private javax.swing.JTextField addStudentNameField;
+    private javax.swing.JTextField addStudentPhoneNumberField;
+    private com.unindra.component.RegionComboBox addStudentProvinceAddressField;
+    private com.unindra.component.RegionComboBox addStudentProvinceBirthplaceField;
+    private com.unindra.component.RegionComboBox addStudentRegencyAddressField;
+    private com.unindra.component.RegionComboBox addStudentRegencyBirthplaceField;
+    private javax.swing.JTextField addStudentUsernameField;
     private javax.swing.JInternalFrame detailClassroom;
     private javax.swing.JInternalFrame detailDepartment;
     private javax.swing.JInternalFrame detailSection;
     private javax.swing.JInternalFrame detailStudent;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
+    private javax.swing.JComboBox<String> detailStudentBirthDateField;
+    private javax.swing.JComboBox<String> detailStudentBirthYearField;
+    private javax.swing.JComboBox<String> detailStudentClassroomField;
+    private javax.swing.JButton detailStudentDeleteButton;
+    private javax.swing.JComboBox<String> detailStudentDepartmentField;
+    private javax.swing.JTextArea detailStudentDetailAddressField;
+    private com.unindra.component.RegionComboBox detailStudentDistrictAddressField;
+    private javax.swing.JButton detailStudentEditButton;
+    private javax.swing.JTextField detailStudentEmailField;
+    private javax.swing.JComboBox<String> detailStudentGenderField;
+    private javax.swing.JTextField detailStudentNameField;
+    private javax.swing.JTextField detailStudentPhoneNumberField;
+    private com.unindra.component.RegionComboBox detailStudentProvinceAddressField;
+    private com.unindra.component.RegionComboBox detailStudentProvinceField;
+    private com.unindra.component.RegionComboBox detailStudentRegencyAddressField;
+    private com.unindra.component.RegionComboBox detailStudentRegencyField;
+    private javax.swing.JComboBox<String> detailStudentSectionField;
+    private javax.swing.JTextField detailStudentUsernameField;
+    private javax.swing.JComboBox<String> detailStudentbirthMonthField;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -1345,28 +1378,15 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox13;
-    private javax.swing.JComboBox<String> jComboBox14;
-    private javax.swing.JComboBox<String> jComboBox15;
-    private javax.swing.JComboBox<String> jComboBox16;
-    private javax.swing.JComboBox<String> jComboBox17;
-    private javax.swing.JComboBox<String> jComboBox18;
-    private javax.swing.JComboBox<String> jComboBox19;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox20;
     private javax.swing.JComboBox<String> jComboBox21;
     private javax.swing.JComboBox<String> jComboBox22;
     private javax.swing.JComboBox<String> jComboBox23;
@@ -1375,11 +1395,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox26;
     private javax.swing.JComboBox<String> jComboBox27;
     private javax.swing.JComboBox<String> jComboBox28;
-    private javax.swing.JComboBox<String> jComboBox29;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox30;
-    private javax.swing.JComboBox<String> jComboBox31;
-    private javax.swing.JComboBox<String> jComboBox32;
     private javax.swing.JComboBox<String> jComboBox33;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
@@ -1458,7 +1473,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1482,7 +1496,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable12;
@@ -1494,9 +1507,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTable jTable9;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -1506,24 +1516,14 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private com.unindra.component.RegionComboBox regionComboBox1;
-    private com.unindra.component.RegionComboBox regionComboBox10;
-    private com.unindra.component.RegionComboBox regionComboBox2;
-    private com.unindra.component.RegionComboBox regionComboBox3;
-    private com.unindra.component.RegionComboBox regionComboBox4;
-    private com.unindra.component.RegionComboBox regionComboBox5;
-    private com.unindra.component.RegionComboBox regionComboBox6;
-    private com.unindra.component.RegionComboBox regionComboBox7;
-    private com.unindra.component.RegionComboBox regionComboBox8;
-    private com.unindra.component.RegionComboBox regionComboBox9;
+    private javax.swing.JPanel studentPanel;
+    private javax.swing.JButton studentPanelAddStudentButton;
+    private javax.swing.JComboBox<String> studentPanelClassroomList;
+    private javax.swing.JComboBox<String> studentPanelDepartmentList;
+    private javax.swing.JButton studentPanelPrintButton;
+    private javax.swing.JTextField studentPanelSearchField;
+    private javax.swing.JComboBox<String> studentPanelSectionList;
+    private javax.swing.JTable studentTable;
     private javax.swing.JInternalFrame transactionPanel;
     // End of variables declaration//GEN-END:variables
 }
