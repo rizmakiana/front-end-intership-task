@@ -1,6 +1,5 @@
 package com.unindra.view;
 
-import com.sun.java.accessibility.util.SwingEventMonitor;
 import com.unindra.util.AppManager;
 import javax.swing.JInternalFrame;
 
@@ -216,6 +215,47 @@ public class Dashboard extends javax.swing.JFrame {
         jTable12 = new javax.swing.JTable();
         jLabel70 = new javax.swing.JLabel();
         jButton20 = new javax.swing.JButton();
+        addCategory = new javax.swing.JInternalFrame();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jTextField19 = new javax.swing.JTextField();
+        jButton21 = new javax.swing.JButton();
+        jLabel73 = new javax.swing.JLabel();
+        addPaymentDetail = new javax.swing.JInternalFrame();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jButton22 = new javax.swing.JButton();
+        jLabel76 = new javax.swing.JLabel();
+        jComboBox34 = new javax.swing.JComboBox<>();
+        jLabel77 = new javax.swing.JLabel();
+        jTextField20 = new javax.swing.JTextField();
+        jLabel82 = new javax.swing.JLabel();
+        jTextField23 = new javax.swing.JTextField();
+        jLabel83 = new javax.swing.JLabel();
+        jLabel84 = new javax.swing.JLabel();
+        jComboBox35 = new javax.swing.JComboBox<>();
+        detailCategory = new javax.swing.JInternalFrame();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jTextField21 = new javax.swing.JTextField();
+        jButton23 = new javax.swing.JButton();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        jTextField22 = new javax.swing.JTextField();
+        detailPaymentDetail = new javax.swing.JInternalFrame();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jButton24 = new javax.swing.JButton();
+        jLabel87 = new javax.swing.JLabel();
+        jComboBox36 = new javax.swing.JComboBox<>();
+        jLabel88 = new javax.swing.JLabel();
+        jTextField24 = new javax.swing.JTextField();
+        jLabel89 = new javax.swing.JLabel();
+        jTextField25 = new javax.swing.JTextField();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jComboBox37 = new javax.swing.JComboBox<>();
+        jButton25 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Management School App");
@@ -535,20 +575,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "No", "Nama Kategori Pembayaran"
+                "Nama Kategori Pembayaran"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -559,10 +599,14 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable6MouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(jTable6);
         if (jTable6.getColumnModel().getColumnCount() > 0) {
-            jTable6.getColumnModel().getColumn(0).setPreferredWidth(40);
-            jTable6.getColumnModel().getColumn(1).setPreferredWidth(550);
+            jTable6.getColumnModel().getColumn(0).setPreferredWidth(550);
         }
 
         jPanel8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 595, 500));
@@ -575,7 +619,7 @@ public class Dashboard extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "No", "Kategori", "Nama Pembayaran", "Biaya"
+                "Kategori", "Untuk Kelas", "Nama Pembayaran", "Biaya"
             }
         ) {
             Class[] types = new Class [] {
@@ -593,20 +637,29 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable7MouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(jTable7);
-        if (jTable7.getColumnModel().getColumnCount() > 0) {
-            jTable7.getColumnModel().getColumn(0).setPreferredWidth(40);
-            jTable7.getColumnModel().getColumn(1).setPreferredWidth(185);
-            jTable7.getColumnModel().getColumn(2).setPreferredWidth(185);
-            jTable7.getColumnModel().getColumn(3).setPreferredWidth(180);
-        }
 
         jPanel8.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 85, 595, 500));
 
         jButton6.setText("Tambah Kategori");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(885, 50, -1, 30));
 
         jButton7.setText("Tambah Pembayaran");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 50, -1, 30));
 
         jTabbedPane2.addTab("Manajemen Pembayaran", jPanel8);
@@ -1167,6 +1220,121 @@ public class Dashboard extends javax.swing.JFrame {
 
         jDesktopPane1.add(transactionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 1200, 500));
 
+        addCategory.setClosable(true);
+        addCategory.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        addCategory.setVisible(false);
+        addCategory.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel71.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel71.setText("Tambah Kategori");
+        addCategory.getContentPane().add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel72.setText("Nama Kategori Pembayaran");
+        addCategory.getContentPane().add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
+        addCategory.getContentPane().add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
+
+        jButton21.setText("Tambah");
+        addCategory.getContentPane().add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 170, 120, 30));
+        addCategory.getContentPane().add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+
+        jDesktopPane1.add(addCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, -1, -1));
+
+        addPaymentDetail.setClosable(true);
+        addPaymentDetail.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        addPaymentDetail.setVisible(false);
+        addPaymentDetail.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel74.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel74.setText("Tambah Pembayaran");
+        addPaymentDetail.getContentPane().add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel75.setText("Kategori");
+        addPaymentDetail.getContentPane().add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 30));
+
+        jButton22.setText("Tambah");
+        addPaymentDetail.getContentPane().add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 220, 120, 30));
+        addPaymentDetail.getContentPane().add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+        addPaymentDetail.getContentPane().add(jComboBox34, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 250, 30));
+
+        jLabel77.setText("Nama Pembayaran");
+        addPaymentDetail.getContentPane().add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+        addPaymentDetail.getContentPane().add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 250, 30));
+
+        jLabel82.setText("Biaya");
+        addPaymentDetail.getContentPane().add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 175, -1, 30));
+        addPaymentDetail.getContentPane().add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 175, 250, 30));
+        addPaymentDetail.getContentPane().add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 265, -1, -1));
+
+        jLabel84.setText("Untuk Kelas");
+        addPaymentDetail.getContentPane().add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
+        addPaymentDetail.getContentPane().add(jComboBox35, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 105, 250, 30));
+
+        jDesktopPane1.add(addPaymentDetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, -1, -1));
+
+        detailCategory.setClosable(true);
+        detailCategory.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        detailCategory.setVisible(false);
+        detailCategory.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel78.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel78.setText("Tambah Kategori");
+        detailCategory.getContentPane().add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel79.setText("Nama Kategori Pembayaran");
+        detailCategory.getContentPane().add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 75, 200, 30));
+        detailCategory.getContentPane().add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 75, 240, 30));
+
+        jButton23.setText("Tambah");
+        detailCategory.getContentPane().add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 170, 120, 30));
+        detailCategory.getContentPane().add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+
+        jLabel81.setText("Total Pembayaran");
+        detailCategory.getContentPane().add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 30));
+
+        jTextField22.setEnabled(false);
+        detailCategory.getContentPane().add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 240, 30));
+
+        jDesktopPane1.add(detailCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, -1, -1));
+
+        detailPaymentDetail.setClosable(true);
+        detailPaymentDetail.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        detailPaymentDetail.setVisible(true);
+        detailPaymentDetail.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel85.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        jLabel85.setText("Detail Pembayaran");
+        detailPaymentDetail.getContentPane().add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel86.setText("Kategori");
+        detailPaymentDetail.getContentPane().add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 30));
+
+        jButton24.setText("Edit");
+        detailPaymentDetail.getContentPane().add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 220, 120, 30));
+        detailPaymentDetail.getContentPane().add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+
+        jComboBox36.setEnabled(false);
+        detailPaymentDetail.getContentPane().add(jComboBox36, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 250, 30));
+
+        jLabel88.setText("Nama Pembayaran");
+        detailPaymentDetail.getContentPane().add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+        detailPaymentDetail.getContentPane().add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 250, 30));
+
+        jLabel89.setText("Biaya");
+        detailPaymentDetail.getContentPane().add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 175, -1, 30));
+        detailPaymentDetail.getContentPane().add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 175, 250, 30));
+        detailPaymentDetail.getContentPane().add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 265, -1, -1));
+
+        jLabel91.setText("Untuk Kelas");
+        detailPaymentDetail.getContentPane().add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
+
+        jComboBox37.setEnabled(false);
+        detailPaymentDetail.getContentPane().add(jComboBox37, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 105, 250, 30));
+
+        jButton25.setText("Hapus");
+        detailPaymentDetail.getContentPane().add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 120, 30));
+
+        jDesktopPane1.add(detailPaymentDetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
@@ -1182,7 +1350,11 @@ public class Dashboard extends javax.swing.JFrame {
             detailClassroom,
             addSection,
             detailSection,
-            transactionPanel
+            transactionPanel,
+            addCategory,
+            addPaymentDetail,
+            detailCategory,
+            detailPaymentDetail
         };
     }
     
@@ -1314,6 +1486,46 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable5MouseClicked
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        
+        addPaymentDetail.setVisible(false);
+        addCategory.setVisible(true);
+        
+        detailCategory.setVisible(false);
+        detailPaymentDetail.setVisible(false);
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        
+        addCategory.setVisible(false);
+        addPaymentDetail.setVisible(true);
+        
+        detailCategory.setVisible(false);
+        detailPaymentDetail.setVisible(false);
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTable6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable6MouseClicked
+        
+        addPaymentDetail.setVisible(false);
+        addCategory.setVisible(false);
+        
+        detailCategory.setVisible(true);
+        detailPaymentDetail.setVisible(false);
+        
+    }//GEN-LAST:event_jTable6MouseClicked
+
+    private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
+        
+        addPaymentDetail.setVisible(false);
+        addCategory.setVisible(false);
+        
+        detailCategory.setVisible(false);
+        detailPaymentDetail.setVisible(true);
+        
+    }//GEN-LAST:event_jTable7MouseClicked
+
     private void generateComponents(){
         initComponents();
         setLocationRelativeTo(null);
@@ -1326,12 +1538,16 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame addCategory;
     private javax.swing.JInternalFrame addClassroom;
     private javax.swing.JInternalFrame addDepartment;
+    private javax.swing.JInternalFrame addPaymentDetail;
     private javax.swing.JInternalFrame addSection;
     private javax.swing.JInternalFrame addStudent;
+    private javax.swing.JInternalFrame detailCategory;
     private javax.swing.JInternalFrame detailClassroom;
     private javax.swing.JInternalFrame detailDepartment;
+    private javax.swing.JInternalFrame detailPaymentDetail;
     private javax.swing.JInternalFrame detailSection;
     private javax.swing.JInternalFrame detailStudent;
     private javax.swing.JButton jButton1;
@@ -1347,6 +1563,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1381,6 +1602,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox31;
     private javax.swing.JComboBox<String> jComboBox32;
     private javax.swing.JComboBox<String> jComboBox33;
+    private javax.swing.JComboBox<String> jComboBox34;
+    private javax.swing.JComboBox<String> jComboBox35;
+    private javax.swing.JComboBox<String> jComboBox36;
+    private javax.swing.JComboBox<String> jComboBox37;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
@@ -1456,8 +1681,29 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1506,7 +1752,14 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
+    private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
