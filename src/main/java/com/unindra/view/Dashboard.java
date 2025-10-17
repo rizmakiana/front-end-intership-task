@@ -2,14 +2,17 @@ package com.unindra.view;
 
 import com.unindra.model.request.ClassroomRequest;
 import com.unindra.model.request.DepartmentRequest;
+import com.unindra.model.request.PaymentCategoryRequest;
 import com.unindra.model.request.SectionRequest;
 import com.unindra.model.request.SectionUpdateRequest;
 import com.unindra.model.response.ClassroomResponse;
 import com.unindra.model.response.DepartmentResponse;
+import com.unindra.model.response.PaymentCategoryResponse;
 import com.unindra.model.response.SectionResponse;
 import com.unindra.model.response.WebResponse;
 import com.unindra.service.ClassroomService;
 import com.unindra.service.DepartmentService;
+import com.unindra.service.PaymentCategoryService;
 import com.unindra.service.SectionService;
 import com.unindra.util.AppManager;
 import java.io.IOException;
@@ -30,6 +33,7 @@ public class Dashboard extends javax.swing.JFrame {
     DepartmentService departmentService = new DepartmentService();
     ClassroomService classroomService = new ClassroomService();
     SectionService sectionService = new SectionService();
+    PaymentCategoryService paymentCategoryService = new PaymentCategoryService();
 
     public Dashboard() throws IOException {
         generateComponents();
@@ -264,6 +268,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel80 = new javax.swing.JLabel();
         jLabel81 = new javax.swing.JLabel();
         jTextField22 = new javax.swing.JTextField();
+        jButton26 = new javax.swing.JButton();
         detailPaymentDetail = new javax.swing.JInternalFrame();
         jLabel85 = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
@@ -616,22 +621,23 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel9.setText("Data Pembayaran Sekolah");
         jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 25));
 
+        jTable6.setAutoCreateRowSorter(true);
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Nama Kategori Pembayaran"
+                "Nama Kategori Pembayaran", "Banyaknya Pembayaran"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -642,6 +648,7 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable6.getTableHeader().setReorderingAllowed(false);
         jTable6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable6MouseClicked(evt);
@@ -649,7 +656,9 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTable6);
         if (jTable6.getColumnModel().getColumnCount() > 0) {
-            jTable6.getColumnModel().getColumn(0).setPreferredWidth(550);
+            jTable6.getColumnModel().getColumn(0).setResizable(false);
+            jTable6.getColumnModel().getColumn(0).setPreferredWidth(300);
+            jTable6.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jPanel8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 595, 500));
@@ -1292,6 +1301,11 @@ public class Dashboard extends javax.swing.JFrame {
         addCategory.getContentPane().add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
 
         jButton21.setText("Tambah");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
         addCategory.getContentPane().add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 170, 120, 30));
         addCategory.getContentPane().add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
 
@@ -1335,22 +1349,35 @@ public class Dashboard extends javax.swing.JFrame {
         detailCategory.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel78.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
-        jLabel78.setText("Tambah Kategori");
+        jLabel78.setText("Detail Kategori");
         detailCategory.getContentPane().add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel79.setText("Nama Kategori Pembayaran");
         detailCategory.getContentPane().add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 75, 200, 30));
         detailCategory.getContentPane().add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 75, 240, 30));
 
-        jButton23.setText("Tambah");
+        jButton23.setText("Edit");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
         detailCategory.getContentPane().add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 170, 120, 30));
         detailCategory.getContentPane().add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
 
-        jLabel81.setText("Total Pembayaran");
+        jLabel81.setText("Banyak Pembayaran");
         detailCategory.getContentPane().add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 30));
 
         jTextField22.setEnabled(false);
         detailCategory.getContentPane().add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 240, 30));
+
+        jButton26.setText("Hapus");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+        detailCategory.getContentPane().add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 120, 30));
 
         jDesktopPane1.add(detailCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, -1, -1));
 
@@ -1429,7 +1456,11 @@ public class Dashboard extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         
+        jComboBox35.removeAllItems();
+        jComboBox35.addItem("Regular");
+        
         for(ClassroomResponse data : datas){
+            jComboBox35.addItem(data.getCode());
             model.addRow(new String[]{
                 data.getCode(),
                 data.getDepartmentName(),
@@ -1455,6 +1486,24 @@ public class Dashboard extends javax.swing.JFrame {
                 String.valueOf(data.getTotalStudents())
             });
         }
+    }
+    
+    private void loadPaymentCategories() throws IOException{
+        List<PaymentCategoryResponse> datas = paymentCategoryService.get();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+        model.setRowCount(0);
+        
+        for(PaymentCategoryResponse data : datas){
+            model.addRow(new Object[]{
+                data.getName(),
+                data.getTotalPayment()
+            });
+        }
+        
+        String[] paymentCategories = datas.stream().map(category -> category.getName()).toArray(String[]::new);
+        
+        jComboBox34.setModel(new DefaultComboBoxModel<>(paymentCategories));
     }
     
     private JInternalFrame[] getAllInternalFrames(){
@@ -1723,6 +1772,11 @@ public class Dashboard extends javax.swing.JFrame {
         detailCategory.setVisible(true);
         detailPaymentDetail.setVisible(false);
         
+        selectedRow = jTable6.getSelectedRow();
+        
+        jTextField21.setText(jTable6.getValueAt(selectedRow, 0).toString());
+        jTextField22.setText(jTable6.getValueAt(selectedRow, 1).toString());
+        
     }//GEN-LAST:event_jTable6MouseClicked
 
     private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
@@ -1794,6 +1848,58 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton17ActionPerformed
 
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        
+        PaymentCategoryRequest request = new PaymentCategoryRequest();
+        
+        request.setName(jTextField19.getText());
+        
+        try {
+            String message = paymentCategoryService.add(request);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadPaymentCategories();
+            addCategory.setVisible(false);
+            jTextField19.setText("");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        
+        String code = jTable6.getValueAt(selectedRow, 0).toString();
+        
+        PaymentCategoryRequest request = new PaymentCategoryRequest();
+        request.setName(jTextField21.getText());
+        
+        try {
+            String message = paymentCategoryService.update(code, request);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadPaymentCategories();
+            detailCategory.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        
+        String code = jTable6.getValueAt(selectedRow, 0).toString();
+        
+        try {
+            String message = paymentCategoryService.delete(code);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadPaymentCategories();
+            detailCategory.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton26ActionPerformed
+
     private void generateComponents() throws IOException{
         initComponents();
         setLocationRelativeTo(null);
@@ -1807,6 +1913,7 @@ public class Dashboard extends javax.swing.JFrame {
         loadDepartments();
         loadClassrooms();
         loadSections();
+        loadPaymentCategories();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1856,6 +1963,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

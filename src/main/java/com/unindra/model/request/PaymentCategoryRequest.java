@@ -1,10 +1,10 @@
 package com.unindra.model.request;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class PaymentCategoryRequest {
     
     private String name;
