@@ -1,10 +1,10 @@
 package com.unindra.model.response;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class DepartmentResponse {
 
     private String departmentName;

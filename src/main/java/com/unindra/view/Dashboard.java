@@ -1,15 +1,28 @@
 package com.unindra.view;
 
+import com.unindra.model.request.DepartmentRequest;
+import com.unindra.model.response.DepartmentResponse;
+import com.unindra.model.response.WebResponse;
+import com.unindra.service.DepartmentService;
 import com.unindra.util.AppManager;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author rizmakiana
  */
 public class Dashboard extends javax.swing.JFrame {
+    
+    DepartmentService departmentService = new DepartmentService();
 
-    public Dashboard() {
+    public Dashboard() throws IOException {
         generateComponents();
     }
 
@@ -345,20 +358,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Kode Jurusan", "Nama Jurusan"
+                "Kode Jurusan", "Nama Jurusan", "Total Tingkat Kelas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -369,6 +382,7 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable2MouseClicked(evt);
@@ -377,7 +391,11 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(55);
             jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(50);
         }
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 595, 255));
@@ -944,6 +962,11 @@ public class Dashboard extends javax.swing.JFrame {
         addDepartment.getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 105, 300, 30));
 
         jButton11.setText("Tambah");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
         addDepartment.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 160, 120, 30));
         addDepartment.getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
 
@@ -1340,6 +1363,31 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loadDepartments() throws IOException{
+        
+        List<DepartmentResponse> datas = departmentService.getAll();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        
+        for(DepartmentResponse data : datas){
+            model.addRow(new String[]{
+                data.getCode(),
+                data.getDepartmentName(),
+                String.valueOf(data.getTotalClassroom())
+            });
+        }
+        
+        String[] departments = datas.stream().map(data -> data.getDepartmentName()).toArray(String[]::new);
+        
+        jComboBox21.setModel(new DefaultComboBoxModel<>(departments));
+        jComboBox23.setModel(new DefaultComboBoxModel<>(departments));
+        jComboBox25.setModel(new DefaultComboBoxModel<>(departments));
+        jComboBox27.setModel(new DefaultComboBoxModel<>(departments));
+        jComboBox29.setModel(new DefaultComboBoxModel<>(departments));
+        jComboBox32.setModel(new DefaultComboBoxModel<>(departments));
+    }
+    
     private JInternalFrame[] getAllInternalFrames(){
         return  new JInternalFrame[]{
             addStudent,
@@ -1397,11 +1445,38 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        
+        String code = jTable2.getValueAt(selectedRow, 0).toString();
+        
+        try {
+            String message = departmentService.delete(code);
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadDepartments();
+            detailDepartment.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
+        
+        DepartmentRequest request = new DepartmentRequest();
+        
+        request.setDepartmentName(jTextField12.getText());
+        request.setCode(jTextField13.getText());
+        
+        try {
+            WebResponse<DepartmentResponse> response = departmentService.add(request);
+            
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadDepartments();
+            detailDepartment.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -1413,6 +1488,11 @@ public class Dashboard extends javax.swing.JFrame {
         detailDepartment.setVisible(true);
         detailClassroom.setVisible(false);
         detailSection.setVisible(false);
+        
+        selectedRow = jTable2.getSelectedRow();
+        jTextField13.setText(jTable2.getValueAt(selectedRow, 0).toString());
+        jTextField12.setText(jTable2.getValueAt(selectedRow, 1).toString());
+        
         
     }//GEN-LAST:event_jTable2MouseClicked
 
@@ -1526,7 +1606,26 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable7MouseClicked
 
-    private void generateComponents(){
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        
+        DepartmentRequest request = new DepartmentRequest();
+        
+        request.setDepartmentName(jTextField10.getText());
+        request.setCode(jTextField11.getText());
+        
+        try {
+            WebResponse<DepartmentResponse> response = departmentService.add(request);
+            
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadDepartments();
+            addDepartment.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void generateComponents() throws IOException{
         initComponents();
         setLocationRelativeTo(null);
         this.setIconImage(AppManager.getImageIcon().getImage());
@@ -1535,6 +1634,8 @@ public class Dashboard extends javax.swing.JFrame {
         jTabbedPane2.putClientProperty("JTabbedPane.tabHeight", 40);
         jTabbedPane2.putClientProperty("JTabbedPane.tabAreaAlignment", "fill");
         jDesktopPane1.setBackground(jTabbedPane1.getBackground());
+        
+        loadDepartments();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1782,4 +1883,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTable studentTable;
     private javax.swing.JInternalFrame transactionPanel;
     // End of variables declaration//GEN-END:variables
+
+    private Integer selectedRow = 0;
 }
