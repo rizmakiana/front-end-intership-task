@@ -1,8 +1,11 @@
 package com.unindra.view;
 
+import com.unindra.model.request.ClassroomRequest;
 import com.unindra.model.request.DepartmentRequest;
+import com.unindra.model.response.ClassroomResponse;
 import com.unindra.model.response.DepartmentResponse;
 import com.unindra.model.response.WebResponse;
+import com.unindra.service.ClassroomService;
 import com.unindra.service.DepartmentService;
 import com.unindra.util.AppManager;
 import java.io.IOException;
@@ -21,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class Dashboard extends javax.swing.JFrame {
     
     DepartmentService departmentService = new DepartmentService();
+    ClassroomService classroomService = new ClassroomService();
 
     public Dashboard() throws IOException {
         generateComponents();
@@ -356,6 +360,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5.setText("Data Seluruh Kelas di Sekolah");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 25));
 
+        jTable2.setAutoCreateRowSorter(true);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -400,22 +405,23 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 595, 255));
 
+        jTable3.setAutoCreateRowSorter(true);
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Kode Tingkat Kelas", "Jurusan", "Tingkat Kelas"
+                "Kode Tingkat Kelas", "Jurusan", "Tingkat Kelas", "Total Kelas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -426,15 +432,27 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable3.getTableHeader().setReorderingAllowed(false);
         jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable3MouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setResizable(false);
+            jTable3.getColumnModel().getColumn(0).setPreferredWidth(55);
+            jTable3.getColumnModel().getColumn(1).setResizable(false);
+            jTable3.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTable3.getColumnModel().getColumn(2).setResizable(false);
+            jTable3.getColumnModel().getColumn(2).setPreferredWidth(50);
+            jTable3.getColumnModel().getColumn(3).setResizable(false);
+            jTable3.getColumnModel().getColumn(3).setPreferredWidth(50);
+        }
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 85, 595, 255));
 
+        jTable4.setAutoCreateRowSorter(true);
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1024,6 +1042,11 @@ public class Dashboard extends javax.swing.JFrame {
         addClassroom.getContentPane().add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
 
         jButton14.setText("Tambah");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
         addClassroom.getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 160, 120, 30));
         addClassroom.getContentPane().add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
 
@@ -1388,6 +1411,23 @@ public class Dashboard extends javax.swing.JFrame {
         jComboBox32.setModel(new DefaultComboBoxModel<>(departments));
     }
     
+    private void loadClassrooms() throws IOException {
+        List<ClassroomResponse> datas = classroomService.getAll();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        
+        for(ClassroomResponse data : datas){
+            model.addRow(new String[]{
+                data.getCode(),
+                data.getDepartmentName(),
+                data.getGradeLevel(),
+                String.valueOf(data.getTotalSection())
+            });
+        }
+        
+    }
+    
     private JInternalFrame[] getAllInternalFrames(){
         return  new JInternalFrame[]{
             addStudent,
@@ -1466,12 +1506,14 @@ public class Dashboard extends javax.swing.JFrame {
         
         request.setDepartmentName(jTextField12.getText());
         request.setCode(jTextField13.getText());
+        String code = jTable2.getValueAt(selectedRow, 0).toString();
         
         try {
-            WebResponse<DepartmentResponse> response = departmentService.add(request);
+            WebResponse<DepartmentResponse> response = departmentService.update(code, request);
             
             JOptionPane.showMessageDialog(this, response.getMessage(), "Sukses", JOptionPane.INFORMATION_MESSAGE);
             loadDepartments();
+            loadClassrooms();
             detailDepartment.setVisible(false);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
@@ -1497,7 +1539,20 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
+        
+        String code = jTable3.getValueAt(selectedRow, 0).toString();
+        
+        try {
+            String message = classroomService.delete(code);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadDepartments();
+            loadClassrooms();
+            detailClassroom.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -1517,6 +1572,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+
+        selectedRow = jTable3.getSelectedRow();
         
         addDepartment.setVisible(false);
         addClassroom.setVisible(false);
@@ -1526,6 +1583,11 @@ public class Dashboard extends javax.swing.JFrame {
         detailClassroom.setVisible(true);
         detailSection.setVisible(false);
         
+        jTextField14.setText(jTable3.getValueAt(selectedRow, 0).toString());
+        jComboBox23.setSelectedItem(jTable3.getValueAt(selectedRow, 1).toString());
+        jComboBox24.setSelectedItem(jTable3.getValueAt(selectedRow, 2).toString());
+        jTextField15.setText(jTable3.getValueAt(selectedRow, 3).toString());
+       
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
@@ -1625,6 +1687,26 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        
+        ClassroomRequest request = new ClassroomRequest();
+        
+        request.setDepartmentName(jComboBox21.getSelectedItem().toString());
+        request.setGradeLevel(jComboBox22.getSelectedItem().toString());
+        
+        try {
+            String message = classroomService.add(request);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadDepartments();
+            loadClassrooms();
+            addClassroom.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton14ActionPerformed
+
     private void generateComponents() throws IOException{
         initComponents();
         setLocationRelativeTo(null);
@@ -1636,6 +1718,7 @@ public class Dashboard extends javax.swing.JFrame {
         jDesktopPane1.setBackground(jTabbedPane1.getBackground());
         
         loadDepartments();
+        loadClassrooms();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
