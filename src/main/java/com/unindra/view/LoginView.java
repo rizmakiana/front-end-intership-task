@@ -1,12 +1,20 @@
 package com.unindra.view;
 
+import com.unindra.model.request.LoginRequest;
+import com.unindra.service.AuthService;
 import com.unindra.util.AppManager;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author rizmakiana
  */
 public class LoginView extends javax.swing.JFrame {
+    
+    AuthService authService = new AuthService();
 
     public LoginView() {
         generateComponent();
@@ -87,10 +95,23 @@ public class LoginView extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         
-        Dashboard view = new Dashboard();
-        view.setVisible(true);
+        LoginRequest request = new LoginRequest();
+        request.setUsername(jTextField1.getText());
+        request.setPassword(new String (jPasswordField1.getPassword()));
+        
+        try {
+            String message = authService.loginStaff(request);
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.PLAIN_MESSAGE);
+            
+            Dashboard view = new Dashboard();
+            view.setVisible(true);
         
         this.dispose();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
         
     }//GEN-LAST:event_loginButtonActionPerformed
 
