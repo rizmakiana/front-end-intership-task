@@ -2,11 +2,15 @@ package com.unindra.view;
 
 import com.unindra.model.request.ClassroomRequest;
 import com.unindra.model.request.DepartmentRequest;
+import com.unindra.model.request.SectionRequest;
+import com.unindra.model.request.SectionUpdateRequest;
 import com.unindra.model.response.ClassroomResponse;
 import com.unindra.model.response.DepartmentResponse;
+import com.unindra.model.response.SectionResponse;
 import com.unindra.model.response.WebResponse;
 import com.unindra.service.ClassroomService;
 import com.unindra.service.DepartmentService;
+import com.unindra.service.SectionService;
 import com.unindra.util.AppManager;
 import java.io.IOException;
 import java.util.List;
@@ -25,6 +29,7 @@ public class Dashboard extends javax.swing.JFrame {
     
     DepartmentService departmentService = new DepartmentService();
     ClassroomService classroomService = new ClassroomService();
+    SectionService sectionService = new SectionService();
 
     public Dashboard() throws IOException {
         generateComponents();
@@ -455,20 +460,20 @@ public class Dashboard extends javax.swing.JFrame {
         jTable4.setAutoCreateRowSorter(true);
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Kode Kelas", "Jurusan", "Tingkat Kelas", "Nama Kelas"
+                "Kode Kelas", "Jurusan", "Tingkat Kelas", "Nama Kelas", "Jumlah Murid"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -479,6 +484,7 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable4.getTableHeader().setReorderingAllowed(false);
         jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable4MouseClicked(evt);
@@ -490,6 +496,7 @@ public class Dashboard extends javax.swing.JFrame {
             jTable4.getColumnModel().getColumn(1).setResizable(false);
             jTable4.getColumnModel().getColumn(2).setResizable(false);
             jTable4.getColumnModel().getColumn(3).setResizable(false);
+            jTable4.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 1200, 280));
@@ -1128,6 +1135,11 @@ public class Dashboard extends javax.swing.JFrame {
         addSection.getContentPane().add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, 30));
 
         jButton17.setText("Tambah");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
         addSection.getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 160, 120, 30));
         addSection.getContentPane().add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
 
@@ -1425,7 +1437,24 @@ public class Dashboard extends javax.swing.JFrame {
                 String.valueOf(data.getTotalSection())
             });
         }
+    
+    }
+    
+    private void loadSections() throws IOException{
+        List<SectionResponse> datas = sectionService.getAll();
         
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        model.setRowCount(0);
+        
+        for(SectionResponse data : datas){
+            model.addRow(new String[]{
+                data.getCode(),
+                data.getDepartmentName(),
+                data.getGradeLevel(),
+                String.valueOf(data.getName()),
+                String.valueOf(data.getTotalStudents())
+            });
+        }
     }
     
     private JInternalFrame[] getAllInternalFrames(){
@@ -1514,6 +1543,7 @@ public class Dashboard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Sukses", JOptionPane.INFORMATION_MESSAGE);
             loadDepartments();
             loadClassrooms();
+            loadSections();
             detailDepartment.setVisible(false);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
@@ -1591,11 +1621,40 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        
+        String code = jTable4.getValueAt(selectedRow, 0).toString();
+        
+        try {
+            String message = sectionService.delete(code);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadClassrooms();
+            loadSections();
+            detailSection.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
+        
+        String code = jTable4.getValueAt(selectedRow, 0).toString();
+        
+        SectionUpdateRequest request = new SectionUpdateRequest();
+        request.setName(jTextField17.getText());
+        
+        try {
+            String message = sectionService.update(code, request);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadClassrooms();
+            loadSections();
+            detailSection.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1611,6 +1670,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
+
+        selectedRow = jTable4.getSelectedRow();
         
         addDepartment.setVisible(false);
         addClassroom.setVisible(false);
@@ -1619,6 +1680,12 @@ public class Dashboard extends javax.swing.JFrame {
         detailDepartment.setVisible(false);
         detailClassroom.setVisible(false);
         detailSection.setVisible(true);
+        
+        jTextField16.setText(jTable4.getValueAt(selectedRow, 0).toString());
+        jComboBox27.setSelectedItem(jTable4.getValueAt(selectedRow, 1).toString());
+        jComboBox28.setSelectedItem(jTable4.getValueAt(selectedRow, 2).toString());
+        jTextField17.setText(jTable4.getValueAt(selectedRow, 3).toString());
+        jTextField18.setText(jTable4.getValueAt(selectedRow, 4).toString());
         
     }//GEN-LAST:event_jTable4MouseClicked
 
@@ -1707,6 +1774,26 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        
+        SectionRequest request = new SectionRequest();
+        
+        request.setDepartmentName(jComboBox25.getSelectedItem().toString());
+        request.setGradeLevel(jComboBox26.getSelectedItem().toString());
+        
+        try {
+            String message = sectionService.add(request);
+        
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadClassrooms();
+            loadSections();
+            addSection.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton17ActionPerformed
+
     private void generateComponents() throws IOException{
         initComponents();
         setLocationRelativeTo(null);
@@ -1719,6 +1806,7 @@ public class Dashboard extends javax.swing.JFrame {
         
         loadDepartments();
         loadClassrooms();
+        loadSections();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
