@@ -3,16 +3,20 @@ package com.unindra.view;
 import com.unindra.model.request.ClassroomRequest;
 import com.unindra.model.request.DepartmentRequest;
 import com.unindra.model.request.PaymentCategoryRequest;
+import com.unindra.model.request.PaymentDetailRequest;
+import com.unindra.model.request.PaymentDetailUpdate;
 import com.unindra.model.request.SectionRequest;
 import com.unindra.model.request.SectionUpdateRequest;
 import com.unindra.model.response.ClassroomResponse;
 import com.unindra.model.response.DepartmentResponse;
 import com.unindra.model.response.PaymentCategoryResponse;
+import com.unindra.model.response.PaymentDetailResponse;
 import com.unindra.model.response.SectionResponse;
 import com.unindra.model.response.WebResponse;
 import com.unindra.service.ClassroomService;
 import com.unindra.service.DepartmentService;
 import com.unindra.service.PaymentCategoryService;
+import com.unindra.service.PaymentDetailService;
 import com.unindra.service.SectionService;
 import com.unindra.util.AppManager;
 import java.io.IOException;
@@ -34,6 +38,7 @@ public class Dashboard extends javax.swing.JFrame {
     ClassroomService classroomService = new ClassroomService();
     SectionService sectionService = new SectionService();
     PaymentCategoryService paymentCategoryService = new PaymentCategoryService();
+    PaymentDetailService paymentDetailService = new PaymentDetailService();
 
     public Dashboard() throws IOException {
         generateComponents();
@@ -663,6 +668,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 595, 500));
 
+        jTable7.setAutoCreateRowSorter(true);
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -689,12 +695,23 @@ public class Dashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable7.getTableHeader().setReorderingAllowed(false);
         jTable7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable7MouseClicked(evt);
             }
         });
         jScrollPane7.setViewportView(jTable7);
+        if (jTable7.getColumnModel().getColumnCount() > 0) {
+            jTable7.getColumnModel().getColumn(0).setResizable(false);
+            jTable7.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTable7.getColumnModel().getColumn(1).setResizable(false);
+            jTable7.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTable7.getColumnModel().getColumn(2).setResizable(false);
+            jTable7.getColumnModel().getColumn(2).setPreferredWidth(220);
+            jTable7.getColumnModel().getColumn(3).setResizable(false);
+            jTable7.getColumnModel().getColumn(3).setPreferredWidth(125);
+        }
 
         jPanel8.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 85, 595, 500));
 
@@ -1324,6 +1341,11 @@ public class Dashboard extends javax.swing.JFrame {
         addPaymentDetail.getContentPane().add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 30));
 
         jButton22.setText("Tambah");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
         addPaymentDetail.getContentPane().add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 220, 120, 30));
         addPaymentDetail.getContentPane().add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
         addPaymentDetail.getContentPane().add(jComboBox34, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 250, 30));
@@ -1394,6 +1416,11 @@ public class Dashboard extends javax.swing.JFrame {
         detailPaymentDetail.getContentPane().add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 30));
 
         jButton24.setText("Edit");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
         detailPaymentDetail.getContentPane().add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 220, 120, 30));
         detailPaymentDetail.getContentPane().add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
 
@@ -1416,6 +1443,11 @@ public class Dashboard extends javax.swing.JFrame {
         detailPaymentDetail.getContentPane().add(jComboBox37, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 105, 250, 30));
 
         jButton25.setText("Hapus");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
         detailPaymentDetail.getContentPane().add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 120, 30));
 
         jDesktopPane1.add(detailPaymentDetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
@@ -1457,10 +1489,13 @@ public class Dashboard extends javax.swing.JFrame {
         model.setRowCount(0);
         
         jComboBox35.removeAllItems();
+        jComboBox37.removeAllItems();
         jComboBox35.addItem("Regular");
+        jComboBox37.addItem("Regular");
         
         for(ClassroomResponse data : datas){
             jComboBox35.addItem(data.getCode());
+            jComboBox37.addItem(data.getCode());
             model.addRow(new String[]{
                 data.getCode(),
                 data.getDepartmentName(),
@@ -1504,6 +1539,24 @@ public class Dashboard extends javax.swing.JFrame {
         String[] paymentCategories = datas.stream().map(category -> category.getName()).toArray(String[]::new);
         
         jComboBox34.setModel(new DefaultComboBoxModel<>(paymentCategories));
+        jComboBox36.setModel(new DefaultComboBoxModel<>(paymentCategories));
+    }
+    
+    private void loadPaymentDetails() throws IOException {
+        List<PaymentDetailResponse> datas = paymentDetailService.get();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable7.getModel();
+        model.setRowCount(0);
+        
+        for(PaymentDetailResponse data : datas){
+            model.addRow(new Object[]{
+                data.getCategoryName(),
+                data.getClassroomCode(),
+                data.getPaymentName(),
+                data.getUnitPrice()
+            });
+        }
+
     }
     
     private JInternalFrame[] getAllInternalFrames(){
@@ -1593,6 +1646,7 @@ public class Dashboard extends javax.swing.JFrame {
             loadDepartments();
             loadClassrooms();
             loadSections();
+            loadPaymentDetails();
             detailDepartment.setVisible(false);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
@@ -1787,6 +1841,13 @@ public class Dashboard extends javax.swing.JFrame {
         detailCategory.setVisible(false);
         detailPaymentDetail.setVisible(true);
         
+        selectedRow = jTable7.getSelectedRow();
+        
+        jComboBox36.setSelectedItem(jTable7.getValueAt(selectedRow, 0).toString());
+        jComboBox37.setSelectedItem(jTable7.getValueAt(selectedRow, 1).toString());
+        jTextField24.setText(jTable7.getValueAt(selectedRow, 2).toString());
+        jTextField25.setText(jTable7.getValueAt(selectedRow, 3).toString());
+        
     }//GEN-LAST:event_jTable7MouseClicked
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -1900,6 +1961,70 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton26ActionPerformed
 
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        
+        PaymentDetailRequest request = new PaymentDetailRequest();
+        
+        request.setCategoryName(jComboBox34.getSelectedItem().toString());
+        request.setClassroomCode(jComboBox35.getSelectedItem().toString());
+        request.setName(jTextField20.getText());
+        request.setUnitPrice(jTextField23.getText());
+        
+        try {
+            String message = paymentDetailService.add(request);
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadPaymentCategories();
+            loadPaymentDetails();
+            addPaymentDetail.setVisible(false);
+            
+            jTextField20.setText("");
+            jTextField23.setText("");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+
+        String keyword = jTable7.getValueAt(selectedRow, 0) + "-" + jTable7.getValueAt(selectedRow, 1) + "-" + jTable7.getValueAt(selectedRow, 2);
+        
+        PaymentDetailUpdate request = new PaymentDetailUpdate();
+        
+        request.setName(jTextField24.getText());
+        request.setUnitPrice(jTextField25.getText());
+        
+        try {
+            String message = paymentDetailService.update(keyword, request);
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadPaymentDetails();
+            detailPaymentDetail.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        
+        String keyword = jTable7.getValueAt(selectedRow, 0) + "-" + jTable7.getValueAt(selectedRow, 1) + "-" + jTable7.getValueAt(selectedRow, 2);
+        
+        try {
+            String message = paymentDetailService.delete(keyword);
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadPaymentCategories();
+            loadPaymentDetails();
+            detailPaymentDetail.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton25ActionPerformed
+
     private void generateComponents() throws IOException{
         initComponents();
         setLocationRelativeTo(null);
@@ -1914,6 +2039,7 @@ public class Dashboard extends javax.swing.JFrame {
         loadClassrooms();
         loadSections();
         loadPaymentCategories();
+        loadPaymentDetails();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
