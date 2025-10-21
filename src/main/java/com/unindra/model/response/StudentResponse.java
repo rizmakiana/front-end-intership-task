@@ -2,11 +2,11 @@ package com.unindra.model.response;
 
 import com.unindra.model.util.Gender;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class StudentResponse {
     
     private String studentId;
@@ -18,6 +18,10 @@ public class StudentResponse {
     private String regencyId;
 
     private String birthDate;
+    
+    private Integer birthMonth;
+
+    private String birthYear;
 
     private String districtId;
 

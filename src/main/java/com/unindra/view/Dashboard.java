@@ -7,18 +7,28 @@ import com.unindra.model.request.PaymentDetailRequest;
 import com.unindra.model.request.PaymentDetailUpdate;
 import com.unindra.model.request.SectionRequest;
 import com.unindra.model.request.SectionUpdateRequest;
+import com.unindra.model.request.StudentRequest;
+import com.unindra.model.request.StudentUpdate;
 import com.unindra.model.response.ClassroomResponse;
 import com.unindra.model.response.DepartmentResponse;
 import com.unindra.model.response.PaymentCategoryResponse;
 import com.unindra.model.response.PaymentDetailResponse;
 import com.unindra.model.response.SectionResponse;
+import com.unindra.model.response.StudentResponse;
+import com.unindra.model.response.StudentTable;
 import com.unindra.model.response.WebResponse;
+import com.unindra.model.util.Gender;
+import com.unindra.school.app.model.response.RegionResponse;
 import com.unindra.service.ClassroomService;
 import com.unindra.service.DepartmentService;
 import com.unindra.service.PaymentCategoryService;
 import com.unindra.service.PaymentDetailService;
+import com.unindra.service.RegionService;
 import com.unindra.service.SectionService;
+import com.unindra.service.StudentService;
 import com.unindra.util.AppManager;
+import com.unindra.util.ComboBoxUtil;
+import java.awt.event.ItemEvent;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,6 +49,8 @@ public class Dashboard extends javax.swing.JFrame {
     SectionService sectionService = new SectionService();
     PaymentCategoryService paymentCategoryService = new PaymentCategoryService();
     PaymentDetailService paymentDetailService = new PaymentDetailService();
+    StudentService studentService = new StudentService();
+    RegionService regionService = new RegionService();
 
     public Dashboard() throws IOException {
         generateComponents();
@@ -856,9 +868,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel20.setText("Alamat");
         addStudent.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
-        addStudent.getContentPane().add(addStudentNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
-        addStudent.getContentPane().add(addStudentProvinceBirthplaceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
-        addStudent.getContentPane().add(addStudentRegencyBirthplaceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
+        addStudent.getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
+
+        regionComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionComboBox1ActionPerformed(evt);
+            }
+        });
+        addStudent.getContentPane().add(regionComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
+        addStudent.getContentPane().add(regionComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
 
         addStudentBirthdateField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "28", "29", "30", "31" }));
         addStudent.getContentPane().add(addStudentBirthdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 175, -1, 30));
@@ -866,11 +884,23 @@ public class Dashboard extends javax.swing.JFrame {
         addStudentBirthMonthField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "September", "Oktober" }));
         addStudent.getContentPane().add(addStudentBirthMonthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 175, 135, 30));
 
-        addStudentBirthYearField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
-        addStudent.getContentPane().add(addStudentBirthYearField, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
-        addStudent.getContentPane().add(addStudentProvinceAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
-        addStudent.getContentPane().add(addStudentRegencyAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
-        addStudent.getContentPane().add(addStudentDistrictAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
+        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
+        addStudent.getContentPane().add(jComboBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
+
+        regionComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionComboBox3ActionPerformed(evt);
+            }
+        });
+        addStudent.getContentPane().add(regionComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
+
+        regionComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionComboBox4ActionPerformed(evt);
+            }
+        });
+        addStudent.getContentPane().add(regionComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
+        addStudent.getContentPane().add(regionComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
 
         addStudentDetailAddressField.setColumns(20);
         addStudentDetailAddressField.setLineWrap(true);
@@ -895,8 +925,13 @@ public class Dashboard extends javax.swing.JFrame {
         addStudent.getContentPane().add(addStudentEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 300, 30));
         addStudent.getContentPane().add(addStudentPhoneNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 415, 300, 30));
 
-        addStudentAddButton.setText("Tambah");
-        addStudent.getContentPane().add(addStudentAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 520, 120, 30));
+        jButton8.setText("Tambah");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        addStudent.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 520, 120, 30));
         addStudent.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 565, -1, -1));
 
         jLabel66.setText("Jurusan");
@@ -929,9 +964,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel30.setText("Alamat");
         detailStudent.getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
-        detailStudent.getContentPane().add(detailStudentNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
-        detailStudent.getContentPane().add(detailStudentProvinceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
-        detailStudent.getContentPane().add(detailStudentRegencyField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
+        detailStudent.getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 300, 30));
+
+        regionComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionComboBox6ActionPerformed(evt);
+            }
+        });
+        detailStudent.getContentPane().add(regionComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 150, 30));
+        detailStudent.getContentPane().add(regionComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 140, 145, 30));
 
         detailStudentBirthDateField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "28", "29", "30", "31" }));
         detailStudent.getContentPane().add(detailStudentBirthDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 175, -1, 30));
@@ -939,11 +980,23 @@ public class Dashboard extends javax.swing.JFrame {
         detailStudentbirthMonthField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "September", "Oktober" }));
         detailStudent.getContentPane().add(detailStudentbirthMonthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 175, 135, 30));
 
-        detailStudentBirthYearField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
-        detailStudent.getContentPane().add(detailStudentBirthYearField, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
-        detailStudent.getContentPane().add(detailStudentProvinceAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
-        detailStudent.getContentPane().add(detailStudentRegencyAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
-        detailStudent.getContentPane().add(detailStudentDistrictAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
+        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
+        detailStudent.getContentPane().add(jComboBox19, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 175, 85, 30));
+
+        regionComboBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionComboBox8ActionPerformed(evt);
+            }
+        });
+        detailStudent.getContentPane().add(regionComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 30));
+
+        regionComboBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionComboBox9ActionPerformed(evt);
+            }
+        });
+        detailStudent.getContentPane().add(regionComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 210, 145, 30));
+        detailStudent.getContentPane().add(regionComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 245, 300, 30));
 
         detailStudentDetailAddressField.setColumns(20);
         detailStudentDetailAddressField.setLineWrap(true);
@@ -977,8 +1030,13 @@ public class Dashboard extends javax.swing.JFrame {
         detailStudent.getContentPane().add(detailStudentDeleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 535, 120, 30));
         detailStudent.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 565, -1, -1));
 
-        detailStudentEditButton.setText("Edit");
-        detailStudent.getContentPane().add(detailStudentEditButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 535, 120, 30));
+        jButton10.setText("Edit");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        detailStudent.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 535, 120, 30));
 
         detailStudentClassroomField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "11", "12" }));
         detailStudent.getContentPane().add(detailStudentClassroomField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 485, 150, 30));
@@ -1457,6 +1515,59 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setupComboBoxUtil(){
+        
+        jComboBox13.setModel(new DefaultComboBoxModel<>(ComboBoxUtil.getDateList()));
+        jComboBox14.setModel(new DefaultComboBoxModel<>(ComboBoxUtil.getMonthList()));
+        jComboBox15.setModel(new DefaultComboBoxModel<>(ComboBoxUtil.getYearListStudent()));
+        
+        jComboBox17.setModel(new DefaultComboBoxModel<>(ComboBoxUtil.getDateList()));
+        jComboBox18.setModel(new DefaultComboBoxModel<>(ComboBoxUtil.getMonthList()));
+        jComboBox19.setModel(new DefaultComboBoxModel<>(ComboBoxUtil.getYearListStudent()));
+        
+    }
+    
+    private void setUpRegionComboBox() throws IOException {
+        List<RegionResponse> provinces = regionService.getProvinces();
+        
+        regionComboBox1.setItems(provinces);
+        regionComboBox3.setItems(provinces);
+        regionComboBox6.setItems(provinces);
+        regionComboBox8.setItems(provinces);
+        
+        List<RegionResponse> regencies = regionService.getRegencies(regionComboBox1.getSelectedRegion().getId());
+        
+        regionComboBox2.setItems(regencies);
+        regionComboBox4.setItems(regencies);
+        regionComboBox7.setItems(regencies);
+        
+        List<RegionResponse> districts = regionService.getDistricts(regionComboBox4.getSelectedRegion().getId());
+        
+        regionComboBox5.setItems(districts);
+        
+    }
+    
+    private void loadStudents() throws IOException {
+        List<StudentTable> datas = studentService.get();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        for(StudentTable data : datas){
+            model.addRow(new String[]{
+                data.getStudentId(),
+                data.getName(),
+                data.getGender(),
+                data.getRegencyName(),
+                data.getBirthDate(),
+                data.getDepartment(),
+                data.getClassroom(),
+                data.getSection()
+            });
+        }
+        
+    }
+    
     private void loadDepartments() throws IOException{
         
         List<DepartmentResponse> datas = departmentService.getAll();
@@ -1521,6 +1632,14 @@ public class Dashboard extends javax.swing.JFrame {
                 String.valueOf(data.getTotalStudents())
             });
         }
+        
+        String[] sections = datas.stream()
+                                    .map(s -> String.valueOf(s.getName()))
+                                    .distinct()
+                                    .sorted()
+                                    .toArray(String[]::new);
+
+        jComboBox31.setModel(new DefaultComboBoxModel<>(sections));
     }
     
     private void loadPaymentCategories() throws IOException{
@@ -1584,11 +1703,63 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_studentPanelAddStudentButtonActionPerformed
 
-    private void detailStudentDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailStudentDeleteButtonActionPerformed
-        
-    }//GEN-LAST:event_detailStudentDeleteButtonActionPerformed
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
-    private void studentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentTableMouseClicked
+        String id = jTable1.getValueAt(selectedRow, 0).toString();
+        
+        try {
+            String message = studentService.delete(id);
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.ERROR_MESSAGE);
+            loadStudents();
+            detailStudent.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        selectedRow = jTable1.getSelectedRow();
+        
+        String id = jTable1.getValueAt(selectedRow, 0).toString();
+        
+        try {
+            StudentResponse studentDetail = studentService.getStudentDetail(id);
+            
+            jTextField6.setText(studentDetail.getName());
+            jComboBox20.setSelectedIndex((studentDetail.getGender() == Gender.MALE) ? 0 : 1);
+            jTextArea2.setText(studentDetail.getAddress());
+            jTextField7.setText(studentDetail.getUsername());
+            jTextField8.setText(studentDetail.getEmail());
+            jTextField9.setText(studentDetail.getPhoneNumber());
+            
+            jComboBox17.setSelectedItem(studentDetail.getBirthDate());
+            jComboBox18.setSelectedIndex(studentDetail.getBirthMonth() - 1);
+            jComboBox19.setSelectedItem(studentDetail.getBirthYear());
+                    
+            String provinceId = studentDetail.getRegencyId().substring(0, 2);
+            regionComboBox6.setSelectedById(provinceId);
+            regionComboBox7.setItems(regionService.getRegencies(provinceId));
+            regionComboBox7.setSelectedById(studentDetail.getRegencyId());
+            
+            String districtId = studentDetail.getDistrictId();
+            regionComboBox8.setSelectedById(districtId.substring(0,2));
+            regionComboBox9.setItems(regionService.getRegencies(regionComboBox8.getSelectedRegion().getId()));
+            
+            String regencyId = districtId.substring(0, 4);
+            regionComboBox9.setSelectedById(regencyId);
+            regionComboBox10.setItems(regionService.getDistricts(regencyId));
+            regionComboBox10.setSelectedById(districtId);
+            
+            jComboBox32.setSelectedItem(studentDetail.getDepartment());
+            jComboBox30.setSelectedItem(studentDetail.getClassroom());
+            jComboBox31.setSelectedItem(studentDetail.getSection());
+            
+            
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
         
         addStudent.setVisible(false);
         detailStudent.setVisible(true);
@@ -1753,6 +1924,7 @@ public class Dashboard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
             loadClassrooms();
             loadSections();
+            loadStudents();
             detailSection.setVisible(false);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
@@ -2025,6 +2197,153 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton25ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        
+        StudentRequest request = new StudentRequest();
+        
+        request.setName(jTextField2.getText());
+        Gender gender = (jComboBox16.getSelectedIndex() == 0) ? Gender.MALE : Gender.FEMALE;
+        request.setGender(gender);
+        request.setBirthPlaceRegency(regionComboBox2.getSelectedRegion().getId());
+        request.setBirthDate(jComboBox13.getSelectedItem().toString());
+        request.setBirthMonth(jComboBox14.getSelectedIndex() + 1);
+        request.setBirthYear(jComboBox15.getSelectedItem().toString());
+        request.setDistrictAddress(regionComboBox5.getSelectedRegion().getId());
+        request.setAddress(jTextArea1.getText());
+        request.setUsername(jTextField3.getText());
+        request.setEmail(jTextField4.getText());
+        request.setPhoneNumber(jTextField5.getText());
+        request.setDepartmentName(jComboBox29.getSelectedItem().toString());
+        
+        try {
+            String message = studentService.add(request);
+
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadStudents();
+            loadSections();
+            addStudent.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void regionComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionComboBox3ActionPerformed
+        
+        String id = regionComboBox3.getSelectedRegion().getId();
+        try {
+            regionComboBox4.setItems(regionService.getRegencies(id));
+            regionComboBox5.setItems(regionService.getDistricts(regionComboBox4.getSelectedRegion().getId()));
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_regionComboBox3ActionPerformed
+
+    private void regionComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionComboBox1ActionPerformed
+        
+        String id = regionComboBox1.getSelectedRegion().getId();
+        try {
+            regionComboBox2.setItems(regionService.getRegencies(id));
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_regionComboBox1ActionPerformed
+
+    private void regionComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionComboBox4ActionPerformed
+    
+        var selectedRegion = regionComboBox4.getSelectedRegion();
+    
+        if (selectedRegion == null) {
+            return;
+        }
+        
+        String id = regionComboBox4.getSelectedRegion().getId();
+        try {
+            regionComboBox5.setItems(regionService.getDistricts(id));
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_regionComboBox4ActionPerformed
+
+    private void regionComboBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionComboBox8ActionPerformed
+        
+        String id = regionComboBox8.getSelectedRegion().getId();
+        try {
+            regionComboBox9.setItems(regionService.getRegencies(id));
+            regionComboBox10.setItems(regionService.getDistricts(regionComboBox9.getSelectedRegion().getId()));
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_regionComboBox8ActionPerformed
+
+    private void regionComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionComboBox6ActionPerformed
+        
+        String id = regionComboBox6.getSelectedRegion().getId();
+        try {
+            regionComboBox7.setItems(regionService.getRegencies(id));
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_regionComboBox6ActionPerformed
+
+    private void regionComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionComboBox9ActionPerformed
+        
+        var selectedRegion = regionComboBox9.getSelectedRegion();
+    
+        if (selectedRegion == null) {
+            return;
+        }
+        
+        String id = regionComboBox9.getSelectedRegion().getId();
+        try {
+            regionComboBox10.setItems(regionService.getDistricts(id));
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_regionComboBox9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        
+        String id = jTable1.getValueAt(selectedRow, 0).toString();
+        StudentUpdate update = new StudentUpdate();
+        
+        update.setName(jTextField6.getText());
+        Gender gender = (jComboBox20.getSelectedIndex() == 0) ? Gender.MALE : Gender.FEMALE;
+        update.setGender(gender);
+        update.setBirthPlaceRegency(regionComboBox7.getSelectedRegion().getId());
+        update.setBirthDate(jComboBox17.getSelectedItem().toString());
+        update.setBirthMonth(jComboBox18.getSelectedIndex() + 1);
+        update.setBirthYear(jComboBox19.getSelectedItem().toString());
+        update.setDistrictAddress(regionComboBox10.getSelectedRegion().getId());
+        update.setAddress(jTextArea2.getText());
+        update.setUsername(jTextField7.getText());
+        update.setEmail(jTextField8.getText());
+        update.setPhoneNumber(jTextField9.getText());
+        update.setDepartmentName(jComboBox32.getSelectedItem().toString());
+        update.setGradeLevel(jComboBox30.getSelectedItem().toString());
+        update.setSection(jComboBox31.getSelectedItem().toString());
+        
+        try {
+            String message = studentService.update(id, update);
+            loadStudents();
+            
+            JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            detailStudent.setVisible(false);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     private void generateComponents() throws IOException{
         initComponents();
         setLocationRelativeTo(null);
@@ -2035,11 +2354,14 @@ public class Dashboard extends javax.swing.JFrame {
         jTabbedPane2.putClientProperty("JTabbedPane.tabAreaAlignment", "fill");
         jDesktopPane1.setBackground(jTabbedPane1.getBackground());
         
+        setupComboBoxUtil();
+        setUpRegionComboBox();
         loadDepartments();
         loadClassrooms();
         loadSections();
         loadPaymentCategories();
         loadPaymentDetails();
+        loadStudents();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

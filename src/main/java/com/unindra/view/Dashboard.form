@@ -1297,7 +1297,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.unindra.component.RegionComboBox" name="addStudentProvinceBirthplaceField">
+            <Component class="com.unindra.component.RegionComboBox" name="regionComboBox1">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regionComboBox1ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="170" y="140" width="150" height="30"/>
@@ -1368,14 +1371,20 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.unindra.component.RegionComboBox" name="addStudentProvinceAddressField">
+            <Component class="com.unindra.component.RegionComboBox" name="regionComboBox3">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regionComboBox3ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="170" y="210" width="150" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.unindra.component.RegionComboBox" name="addStudentRegencyAddressField">
+            <Component class="com.unindra.component.RegionComboBox" name="regionComboBox4">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regionComboBox4ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="325" y="210" width="145" height="30"/>
@@ -1484,6 +1493,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tambah"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="348" y="520" width="120" height="30"/>
@@ -1610,7 +1622,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.unindra.component.RegionComboBox" name="detailStudentProvinceField">
+            <Component class="com.unindra.component.RegionComboBox" name="regionComboBox6">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regionComboBox6ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="170" y="140" width="150" height="30"/>
@@ -1681,14 +1696,20 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.unindra.component.RegionComboBox" name="detailStudentProvinceAddressField">
+            <Component class="com.unindra.component.RegionComboBox" name="regionComboBox8">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regionComboBox8ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="170" y="210" width="150" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.unindra.component.RegionComboBox" name="detailStudentRegencyAddressField">
+            <Component class="com.unindra.component.RegionComboBox" name="regionComboBox9">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regionComboBox9ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="325" y="210" width="145" height="30"/>
@@ -1817,6 +1838,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="348" y="535" width="120" height="30"/>

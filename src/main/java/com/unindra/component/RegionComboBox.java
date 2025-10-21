@@ -8,6 +8,19 @@ import javax.swing.JComboBox;
  * @author rizmakiana
  */
 public class RegionComboBox extends JComboBox<RegionResponse>{
+
+    public void setSelectedById(String id) {
+        if (id == null) return;
+
+        for (int i = 0; i < getItemCount(); i++) {
+            RegionResponse item = getItemAt(i);
+            if (item != null && id.equals(item.getId())) {
+                setSelectedIndex(i);
+                return;
+            }
+        }
+    }
+
     
     public RegionComboBox() {
         super();

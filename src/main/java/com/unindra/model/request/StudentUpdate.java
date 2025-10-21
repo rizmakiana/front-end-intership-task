@@ -2,11 +2,11 @@ package com.unindra.model.request;
 
 import com.unindra.model.util.Gender;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class StudentUpdate {
 
     private String name;
