@@ -26,7 +26,6 @@ import com.unindra.model.response.StudentTable;
 import com.unindra.model.response.StudentUnpaidResponse;
 import com.unindra.model.response.WebResponse;
 import com.unindra.model.util.Gender;
-import com.unindra.school.app.model.response.RegionResponse;
 import com.unindra.service.ClassroomService;
 import com.unindra.service.DepartmentService;
 import com.unindra.service.DepositService;

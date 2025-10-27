@@ -4,8 +4,6 @@ import com.unindra.model.request.LoginRequest;
 import com.unindra.service.AuthService;
 import com.unindra.util.AppManager;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -96,8 +94,8 @@ public class LoginView extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         
         LoginRequest request = new LoginRequest();
-        request.setUsername(jTextField1.getText());
-        request.setPassword(new String (jPasswordField1.getPassword()));
+        request.setUsername(usernameField.getText());
+        request.setPassword(new String (passwordField.getPassword()));
         
         try {
             String message = authService.loginStaff(request);

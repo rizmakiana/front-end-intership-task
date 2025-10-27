@@ -1,7 +1,8 @@
 package com.unindra.component;
 
-import com.unindra.school.app.model.response.RegionResponse;
 import javax.swing.JComboBox;
+
+import com.unindra.model.response.RegionResponse;
 
 /**
  *
